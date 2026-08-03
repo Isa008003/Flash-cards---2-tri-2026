@@ -1,77 +1,187 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-.cabecalho {
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #7e3e1c;
-}
-
-.cartao {
-    width: 260px;
-    height: 200px;
-}
-
-.cartao-imagem {
-    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f5f2f2;
+    background-color: #eef7f6;
+    color: #2c3e50;
 }
 
-main {
+/* Cabeçalho */
+.cabecalho {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d5c75;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho h1 {
+    font-size: 24px;
+}
+
+.subtitulo {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.navegacao {
+    display: flex;
+    gap: 20px;
+}
+
+.link-nav {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Conteúdo */
+main.conteudo {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 40px 20px;
 }
 
-.cabecalho-link {
-    color: #fff;
-    text-decoration: none;
+.introducao h2 {
+    margin-bottom: 30px;
+    color: #19455e;
+    text-align: center;
+    font-size: 20px;
 }
 
-h1 {
-    color: #fff;
-    font-size: 24px;
+.galeria-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
 }
 
-footer {
-    background-color: #7e3e1c;
-    padding: 15px 25px;
-    color: #fff;
+/* Flashcards Interativos */
+.card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-.cartao-interno {
+.card-conteudo {
+    width: 100%;
+    height: 100%;
     position: relative;
-    transition: transform 0.8s;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
 }
 
-.cartao:hover .cartao-interno {
+/* Efeito de Giro: via Passe de Mouse OU via Clique (Classe JavaScript) */
+.card:hover .card-conteudo,
+.card.virado .card-conteudo {
     transform: rotateY(180deg);
 }
 
-.cartao-frente, .cartao-verso {
+/* Faces */
+.card-frente, .card-verso {
     position: absolute;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
 }
 
-.cartao-verso {
+.card-frente {
+    background-color: #ffffff;
+    border: 2px solid #e2e8f0;
+}
+
+.imagem-card {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.afirmacao {
+    font-style: italic;
+    color: #4a5568;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.card-verso {
+    background-color: #1b4965;
+    color: #ffffff;
     transform: rotateY(180deg);
 }
 
-section {
-    display: flex;
-    gap: 16px;
+.card-verso h3 {
+    color: #62b6cb;
+}
+
+.card-verso p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Badges e Dicas Visuais Interativas */
+.badge-fake {
+    background-color: #e63946;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.badge-verdade {
+    background-color: #2a9d8f;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.instrucao {
+    font-size: 11px;
+    color: #0d5c75;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.instrucao-verso {
+    font-size: 11px;
+    color: #62b6cb;
+    font-weight: bold;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #0d5c75;
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+}
+/* Isso faz o card virar tanto pelo Mouse (hover) quanto pelo Clique (virado) */
+.card:hover .card-conteudo,
+.card.virado .card-conteudo {
+    transform: rotateY(180deg);
 }
